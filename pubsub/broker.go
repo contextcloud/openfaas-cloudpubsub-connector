@@ -103,7 +103,7 @@ func (b *broker) Subscribe(controller types.Controller, topics []string) error {
 			return fmt.Errorf("Get Topic: %w", err)
 		}
 
-		sub, err := b.Subscription(ctx, topic, t)
+		sub, err := b.Subscription(ctx, subID+topic, t)
 		if err != nil {
 			return fmt.Errorf("Get Subscription: %w", err)
 		}
