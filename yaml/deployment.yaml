@@ -22,28 +22,28 @@ spec:
       - name: cloudpubsub-connector
         image: contextcloud/openfaas-cloudpubsub-connector:0.0.1
         env:
-          - name: upstream_timeout
-            value: "1m1s"
-          - name: gateway_url
-            value: "http://gateway.openfaas:8080"
-          - name: topics
-            value: "nats-test,"
-          - name: print_response
-            value: "true"
-          - name: print_response_body
-            value: "true"
-          - name: basic_auth
-            value: "true"
-          - name: secret_mount_path
-            value: "/var/secrets/"
-          - name: topic_delimiter
-            value: ","
-          - name: asynchronous_invocation
-            value: "false"
+        - name: upstream_timeout
+          value: "1m1s"
+        - name: project_id
+          value: "nordic-gaming"
+        - name: topics
+          value: "smashgg,competition,order,user,accounting"
+        - name: print_response
+          value: "true"
+        - name: print_response_body
+          value: "true"
+        - name: basic_auth
+          value: "true"
+        - name: secret_mount_path
+          value: "/var/secrets/"
+        - name: topic_delimiter
+          value: ","
+        - name: asynchronous_invocation
+          value: "false"
         volumeMounts:
-            - name: auth
-              readOnly: true
-              mountPath: "/var/secrets/"
+        - name: auth
+          readOnly: true
+          mountPath: "/var/secrets/"
       volumes:
       - name: auth
         secret:
