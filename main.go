@@ -5,8 +5,8 @@ import (
 
 	"github.com/openfaas-incubator/connector-sdk/types"
 
-	"github.com/contextcloud/openfaas-cloudpubsub/config"
-	"github.com/contextcloud/openfaas-cloudpubsub/pubsub"
+	"github.com/contextcloud/openfaas-cloudpubsub-connector/config"
+	"github.com/contextcloud/openfaas-cloudpubsub-connector/pubsub"
 )
 
 func main() {

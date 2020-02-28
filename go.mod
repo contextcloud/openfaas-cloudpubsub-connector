@@ -1,4 +1,4 @@
-module github.com/contextcloud/openfaas-cloudpubsub
+module github.com/contextcloud/openfaas-cloudpubsub-connector
 
 go 1.14
 

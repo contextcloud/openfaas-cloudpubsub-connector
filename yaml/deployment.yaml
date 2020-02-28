@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cloudpubsub-connector
+    component: cloudpubsub-connector
+  name: cloudpubsub-connector
+  namespace: openfaas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudpubsub-connector
+      component: cloudpubsub-connector
+  template:
+    metadata:
+      labels:
+        app: cloudpubsub-connector
+        component: cloudpubsub-connector
+    spec:
+      containers:
+      - name: cloudpubsub-connector
+        image: contextcloud/openfaas-cloudpubsub-connector:0.0.1
+        env:
+          - name: upstream_timeout
+            value: "1m1s"
+          - name: gateway_url
+            value: "http://gateway.openfaas:8080"
+          - name: topics
+            value: "nats-test,"
+          - name: print_response
+            value: "true"
+          - name: print_response_body
+            value: "true"
+          - name: basic_auth
+            value: "true"
+          - name: secret_mount_path
+            value: "/var/secrets/"
+          - name: topic_delimiter
+            value: ","
+          - name: asynchronous_invocation
+            value: "false"
+        volumeMounts:
+            - name: auth
+              readOnly: true
+              mountPath: "/var/secrets/"
+      volumes:
+      - name: auth
+        secret:
+          secretName: basic-auth
