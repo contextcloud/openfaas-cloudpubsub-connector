@@ -81,12 +81,8 @@ func (b *broker) receive(topic string, controller types.Controller) func(ctx con
 }
 
 func (b *broker) handle(ctx context.Context, sub *pubsub.Subscription, topic string, controller types.Controller) {
-	for {
-		ctx := context.Background()
-		if err := sub.Receive(ctx, b.receive(topic, controller)); err != context.Canceled {
-			log.Printf("Received error for topic %s: %v\n", topic, err)
-		}
-		time.Sleep(time.Second) // don't know if we want this here
+	if err := sub.Receive(ctx, b.receive(topic, controller)); err != context.Canceled {
+		log.Printf("Received error for topic %s: %v\n", topic, err)
 	}
 }
 

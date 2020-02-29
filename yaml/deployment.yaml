@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: cloudpubsub-connector
-        image: contextcloud/openfaas-cloudpubsub-connector:0.0.1
+        image: contextcloud/openfaas-cloudpubsub-connector:0.0.5
         env:
         - name: upstream_timeout
           value: "1m1s"
